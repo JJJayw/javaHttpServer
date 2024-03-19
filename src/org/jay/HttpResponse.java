@@ -1,5 +1,6 @@
 package org.jay;
 
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +21,16 @@ public class HttpResponse implements Serializable {
     private Map<String, String> header = new HashMap<>();
     // 响应体
     private String body;
+
+    private OutputStream outputStream;
+
+    public OutputStream getOutputStream() {
+        return outputStream;
+    }
+
+    public void setOutputStream(OutputStream outputStream) {
+        this.outputStream = outputStream;
+    }
 
     public String getProtocol() {
         return protocol;
@@ -63,5 +74,36 @@ public class HttpResponse implements Serializable {
 
     public Map<String, String> getHeaders() {
         return this.header;
+    }
+
+    public static void success(OutputStream outputStream, String msg) {
+        HttpResponse httpResponse = new HttpResponse();
+        String body = "<h1>" + msg + "</h1>";
+        httpResponse.setHeader("Content-Type", "text/html;charset=UTF-8");
+        httpResponse.setHeader("Content-Length", Integer.toString(body.getBytes().length));
+        httpResponse.setBody(body);
+        HttpResponseHandler.write(outputStream, httpResponse);
+    }
+
+    public static void error(OutputStream outputStream, String msg) {
+        HttpResponse httpResponse = new HttpResponse();
+        String body = "<h1>" + msg + "</h1>";
+//        设置响应头
+        httpResponse.setCode("500");
+        httpResponse.setMessage("internal server Error");
+        httpResponse.setHeader("Content-Type", "text/html;charset=UTF-8");
+        httpResponse.setHeader("Content-Length", Integer.toString(body.getBytes().length));
+        httpResponse.setBody(body);
+        HttpResponseHandler.write(outputStream, httpResponse);
+    }
+
+    public static void fail(OutputStream outputStream, String msg) {
+        HttpResponse httpResponse = new HttpResponse();
+        String body = "<h1>" + msg + "</h1>";
+
+        httpResponse.setHeader("Content-Type", "text/html;charset=UTF-8");
+        httpResponse.setHeader("Content-Length", Integer.toString(body.getBytes().length));
+        httpResponse.setBody(body);
+        HttpResponseHandler.write(outputStream, httpResponse);
     }
 }
