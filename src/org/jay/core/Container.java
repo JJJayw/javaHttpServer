@@ -1,4 +1,8 @@
-package org.jay;
+package org.jay.core;
+
+import org.jay.controller.LoginServlet;
+import org.jay.controller.RegisterServlet;
+import org.jay.controller.UserServlet;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

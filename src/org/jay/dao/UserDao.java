@@ -1,4 +1,7 @@
-package org.jay;
+package org.jay.dao;
+
+import org.jay.entity.User;
+import org.jay.util.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

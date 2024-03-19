@@ -1,4 +1,4 @@
-package org.jay;
+package org.jay.core;
 
 public interface Servlet {
     /*

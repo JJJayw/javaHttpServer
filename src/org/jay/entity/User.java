@@ -1,4 +1,4 @@
-package org.jay;
+package org.jay.entity;
 
 import java.io.Serializable;
 

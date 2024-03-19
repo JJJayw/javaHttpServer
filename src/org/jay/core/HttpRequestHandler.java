@@ -1,4 +1,4 @@
-package org.jay;
+package org.jay.core;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,12 +44,22 @@ public class HttpRequestHandler {
                 httpRequest.setParameter(param[0], param[1]);
             }
         }
+        // 处理响应体里的参数
         httpRequest.setProtocol(startLineElements[2]);
 
         for (int i = 1; i < startAndHeaders.length; i++) {
             String header = startAndHeaders[i];
             String[] keyAndValue = header.split(": ");
             httpRequest.setHeader(keyAndValue[0], keyAndValue[1]);
+        }
+
+        // 判断content-type:application/x-www-form-urlencoded
+        if ("application/x-www-form-urlencoded".equals(httpRequest.getHeader("Content-Type"))) {
+            String[] bodyParams = httpRequest.getBody().split("&");
+            for (String s : bodyParams) {
+                String[] param = s.split("=");
+                httpRequest.setParameter(param[0], param[1]);
+            }
         }
         return httpRequest;
     }

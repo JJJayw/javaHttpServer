@@ -1,4 +1,4 @@
-package org.jay;
+package org.jay.util;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,9 +1,8 @@
-package org.jay;
+package org.jay.core;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 public class HttpResponseHandler implements Serializable {

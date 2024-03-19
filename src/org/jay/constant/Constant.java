@@ -1,4 +1,4 @@
-package org.jay;
+package org.jay.constant;
 
 public class Constant {
 //    网站的根目录

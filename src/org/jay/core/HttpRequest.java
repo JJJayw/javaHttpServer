@@ -1,4 +1,4 @@
-package org.jay;
+package org.jay.core;
 
 import java.io.Serializable;
 import java.util.HashMap;

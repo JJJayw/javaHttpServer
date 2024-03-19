@@ -1,4 +1,11 @@
-package org.jay;
+package org.jay.controller;
+
+import org.jay.core.HttpRequest;
+import org.jay.core.HttpResponse;
+import org.jay.core.HttpResponseHandler;
+import org.jay.core.Servlet;
+import org.jay.dao.UserDao;
+import org.jay.entity.User;
 
 public class UserServlet implements Servlet {
 
