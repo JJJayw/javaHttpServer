@@ -32,14 +32,5 @@ public class HttpResponseHandler implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-
-    public static void main(String[] args) {
-        HttpResponse httpResponse = new HttpResponse();
-        httpResponse.setCode("302");
-        httpResponse.setMessage("Moved Temporarily");
-        httpResponse.setHeader("Location", "https://www.baidu.com");
-        System.out.println(HttpResponseHandler.build(httpResponse));
     }
 }

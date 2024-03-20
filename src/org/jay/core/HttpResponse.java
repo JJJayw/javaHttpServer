@@ -106,4 +106,12 @@ public class HttpResponse implements Serializable {
         httpResponse.setBody(body);
         HttpResponseHandler.write(outputStream, httpResponse);
     }
+
+    public static void redirect(OutputStream outputStream, String url) {
+        HttpResponse httpResponse = new HttpResponse();
+        httpResponse.setCode("302");
+        httpResponse.setMessage("Move Temporarily");
+        httpResponse.setHeader("Location", url);
+        HttpResponseHandler.write(outputStream, httpResponse);
+    }
 }
