@@ -1,26 +1,23 @@
 package org.jay.util;
 
+import org.jay.core.Configuration;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.Properties;
 
 public class JDBCUtil {
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         // 1.数据库连接的4个基本要素：
-        InputStream in = JDBCUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");
-        Properties properties = new Properties();
-        try {
-            properties.load(in);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Map<String, String> dataSource = Configuration.getDataSource();
 
-        String url = properties.getProperty("url");
-        String user = properties.getProperty("username");
-        String password = properties.getProperty("password");
+        String url = dataSource.get("url");
+        String user = dataSource.get("username");
+        String password = dataSource.get("password");
 
         //2.获取连接
         try {
