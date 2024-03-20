@@ -1,24 +1,25 @@
 package org.jay.core;
 
-import org.jay.controller.LoginServlet;
-import org.jay.controller.RegisterServlet;
-import org.jay.controller.UserServlet;
-
+import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Container {
 
-    private static final Map<String, Servlet> SERVLETS = new ConcurrentHashMap<>();
+    private static final ServletContainer SERVLETS = new ServletContainer();
 
-    // 启动的时候注册
-    static {
-        SERVLETS.put("/user", new UserServlet());
-        SERVLETS.put("/login", new LoginServlet());
-        SERVLETS.put("/register", new RegisterServlet());
+    private static final Map<String, Session> SESSIONS = new ConcurrentHashMap<>();
+
+    public static Servlet getServlet(String uri) throws ClassNotFoundException {
+        return SERVLETS.get(uri);
     }
 
-    public static Servlet getServlet(String uri) {
-        return SERVLETS.get(uri);
+    public static void addSession(String key, Session session) {
+        SESSIONS.put(key, session);
+    }
+
+    public static Session getSession(String key) {
+        return SESSIONS.get(key);
     }
 }
