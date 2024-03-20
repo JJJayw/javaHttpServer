@@ -6,7 +6,6 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import javax.xml.parsers.SAXParser;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,7 +38,7 @@ public class Configuration {
         // 读取文档对象
         URL url = Thread.currentThread().getContextClassLoader().getResource("web.xml");
         SAXReader reader = new SAXReader();
-        Document document = null;
+        Document document;
         try {
             document = reader.read(url);
         } catch (DocumentException e) {
