@@ -1,7 +1,6 @@
 package org.jay;
 
 import org.dom4j.DocumentException;
-import org.jay.constant.Constant;
 import org.jay.core.*;
 import org.jay.util.IOUtils;
 
