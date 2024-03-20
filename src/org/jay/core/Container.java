@@ -1,10 +1,9 @@
 package org.jay.core;
 
-import java.io.IOException;
 import java.util.Map;
-import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
+// 注册Servlet到容器中
 public class Container {
 
     private static final ServletContainer SERVLETS = new ServletContainer();
